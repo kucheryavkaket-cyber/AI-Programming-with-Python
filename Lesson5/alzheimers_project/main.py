@@ -23,9 +23,10 @@ except InvalidAgeError as e:
 invalid_bmi_count = check_bmi(df["BMI"])
 if invalid_bmi_count > 0:
     print(f"Кількість некоректних значень BMI: {invalid_bmi_count}")
-    for value in df["BMI"]:
+    for index, value in enumerate(df["BMI"]):
+        row_number = index + 2
         if not validate_bmi(value):
-            print(f"Некоректне значення BMI: {value}")
+            print(f"Некоректне значення BMI: {value} (рядок {row_number})")
 
 # Розрахунок середнього віку пацієнтів
 average_age = avg_age(df['Age']).round(0)
@@ -45,5 +46,8 @@ print(f"Кількість пацієнтів з діагнозом 'Alzheimer's
 report = create_report(average_age, average_bmi, diagnosis_count)
 print("\nЗвіт:")
 print(report)
+
+
+
 
 

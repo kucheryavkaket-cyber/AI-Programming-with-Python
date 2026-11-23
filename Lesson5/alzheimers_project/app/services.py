@@ -4,9 +4,10 @@ from .exceptions import InvalidAgeError
 
 # Перевірка віку пацієнтів
 def check_age(ages):
-    for age in ages:
+    for index, age in enumerate(ages):
+        row_number = index + 2
         if age < 60 or age > 90:
-            raise InvalidAgeError("Вік має бути в межах від 60 до 90 років")
+            raise InvalidAgeError(f"Вік має бути в межах від 60 до 90 років (рядок {row_number})")
     return True
 
 # Перевірка коректності BMI
@@ -36,4 +37,7 @@ def avg_bmi(bmi):
 # Кількість пацієнтів з діагнозом "Alzheimer's Disease"
 def count_diagnosis(diagnosis):
     return diagnosis.eq(1).sum()
+
+
+
 
